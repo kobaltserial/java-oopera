@@ -1,23 +1,27 @@
 import java.util.Objects;
 
 public class Actor extends Person {
-    private double height;
+    private int height;
 
-    public Actor(String name, String surname, String gender, double height) {
+    public Actor(String name, String surname, Gender gender, int height) {
         super(name, surname, gender);
         this.height = height;
     }
 
-    public double getHeight() {
+    public int getHeight() {
         return height;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
         Actor other = (Actor) obj;
-        return Double.compare(other.height, height) == 0
+        return height == other.height
                 && Objects.equals(getName(), other.getName())
                 && Objects.equals(getSurname(), other.getSurname());
     }

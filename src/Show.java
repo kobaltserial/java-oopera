@@ -40,6 +40,10 @@ public class Show {
     }
 
     public void addActor(Actor actor) {
+        if (actor == null) {
+            System.out.println("Нельзя добавить пустого актёра.");
+            return;
+        }
         if (listOfActors.contains(actor)) {
             System.out.println("Актёр " + actor + " уже участвует в спектакле.");
             return;
@@ -48,6 +52,15 @@ public class Show {
     }
 
     public void replaceActor(Actor newActor, String surname) {
+        if (newActor == null) {
+            System.out.println("Нельзя заменить на пустого актёра.");
+            return;
+        }
+        if (surname == null) {
+            System.out.println("Фамилия не указана.");
+            return;
+        }
+
         int foundIndex = -1;
         int count = 0;
 
@@ -62,6 +75,11 @@ public class Show {
 
         if (foundIndex == -1) {
             System.out.println("Актёр с фамилией " + surname + " не найден.");
+            return;
+        }
+
+        if (listOfActors.contains(newActor)) {
+            System.out.println("Актёр " + newActor + " уже участвует в спектакле.");
             return;
         }
 

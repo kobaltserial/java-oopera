@@ -1,14 +1,14 @@
 public class Theatre {
     public static void main(String[] args) {
-        Actor actor1 = new Actor("Иван", "Иванов", "мужской", 180);
-        Actor actor2 = new Actor("Пётр", "Петров", "мужской", 175);
-        Actor actor3 = new Actor("Анна", "Сидорова", "женский", 165);
+        Actor actor1 = new Actor("Иван", "Иванов", Gender.MALE, 180);
+        Actor actor2 = new Actor("Пётр", "Петров", Gender.MALE, 175);
+        Actor actor3 = new Actor("Анна", "Сидорова", Gender.FEMALE, 165);
 
-        Director director1 = new Director("Сергей", "Режиссёров", "мужской", 10);
-        Director director2 = new Director("Ольга", "Постановкина", "женский", 7);
+        Director director1 = new Director("Сергей", "Режиссёров", Gender.MALE, 10);
+        Director director2 = new Director("Ольга", "Постановкина", Gender.FEMALE, 7);
 
-        Person musicAuthor = new Person("Пётр", "Чайковский", "мужской");
-        Person choreographer = new Person("Мариус", "Петипа", "мужской");
+        Person musicAuthor = new Person("Пётр", "Чайковский", Gender.MALE);
+        Person choreographer = new Person("Мариус", "Петипа", Gender.MALE);
 
         Show show = new Show("Обычный спектакль", 120, director1);
         Opera opera = new Opera("Евгений Онегин", 180, director2,
@@ -38,6 +38,7 @@ public class Theatre {
         ballet.printDirector();
         ballet.printActors();
 
+        System.out.println("Спектакль: " + show.getTitle() + " после замены");
         show.replaceActor(actor3, "Петров");
         show.printActors();
 
