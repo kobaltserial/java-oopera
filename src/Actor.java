@@ -1,14 +1,14 @@
 import java.util.Objects;
 
 public class Actor extends Person {
-    private int height;
+    private double height;
 
-    public Actor(String name, String surname, Gender gender, int height) {
+    public Actor(String name, String surname, String gender, double height) {
         super(name, surname, gender);
         this.height = height;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
@@ -17,9 +17,9 @@ public class Actor extends Person {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Actor other = (Actor) obj;
-        return height == other.height
-                && getName().equals(other.getName())
-                && getSurname().equals(other.getSurname());
+        return Double.compare(other.height, height) == 0
+                && Objects.equals(getName(), other.getName())
+                && Objects.equals(getSurname(), other.getSurname());
     }
 
     @Override
@@ -29,6 +29,6 @@ public class Actor extends Person {
 
     @Override
     public String toString() {
-        return getName() + " " + getSurname() + " (" + height + ")";
+        return super.toString() + " (" + height + ")";
     }
 }

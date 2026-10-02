@@ -1,19 +1,19 @@
 public class Theatre {
     public static void main(String[] args) {
-        Actor actor1 = new Actor("Олег", "Александров", Gender.MALE, 180);
-        Actor actor2 = new Actor("Александр", "Олегов", Gender.MALE, 175);
-        Actor actor3 = new Actor("Александра", "Олегова", Gender.FEMALE, 165);
+        Actor actor1 = new Actor("Иван", "Иванов", "мужской", 180);
+        Actor actor2 = new Actor("Пётр", "Петров", "мужской", 175);
+        Actor actor3 = new Actor("Анна", "Сидорова", "женский", 165);
 
-        Director director1 = new Director("Матвей", "Матвеев", Gender.MALE, 10);
-        Director director2 = new Director("Ольга", "Ольгова", Gender.FEMALE, 7);
+        Director director1 = new Director("Сергей", "Режиссёров", "мужской", 10);
+        Director director2 = new Director("Ольга", "Постановкина", "женский", 7);
 
-        String musicAuthor = "Сергей Зверев";
-        String choreographer = "Боб Бобов";
+        Person musicAuthor = new Person("Пётр", "Чайковский", "мужской");
+        Person choreographer = new Person("Мариус", "Петипа", "мужской");
 
-        Show show = new Show("Спектакль 1", 120, director1);
-        Opera opera = new Opera("Спектакль 2", 180, director2,
+        Show show = new Show("Обычный спектакль", 120, director1);
+        Opera opera = new Opera("Евгений Онегин", 180, director2,
                 musicAuthor, "Либретто оперы", 40);
-        Ballet ballet = new Ballet("Спектакль 4", 150, director1,
+        Ballet ballet = new Ballet("Лебединое озеро", 150, director1,
                 musicAuthor, "Либретто балета", choreographer);
 
         show.addActor(actor1);
@@ -26,21 +26,24 @@ public class Theatre {
         ballet.addActor(actor2);
         ballet.addActor(actor3);
 
-        printShowInfo(show);
-        printShowInfo(opera);
-        printShowInfo(ballet);
+        System.out.println("Спектакль: " + show.getTitle());
+        show.printDirector();
+        show.printActors();
 
-        show.replaceActor(actor3, "Олегов");
+        System.out.println("Спектакль: " + opera.getTitle());
+        opera.printDirector();
+        opera.printActors();
+
+        System.out.println("Спектакль: " + ballet.getTitle());
+        ballet.printDirector();
+        ballet.printActors();
+
+        show.replaceActor(actor3, "Петров");
         show.printActors();
 
         opera.replaceActor(actor2, "Несуществующий");
 
         opera.printLibretto();
         ballet.printLibretto();
-    }
-
-    private static void printShowInfo(Show show) {
-        show.printDirector();
-        show.printActors();
     }
 }
